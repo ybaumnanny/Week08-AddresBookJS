@@ -27,6 +27,8 @@ try{
     console.log(addressBook.viewPersonsByCityOrState()) 
 
     console.log(addressBook.countByCityOrState())
+
+    console.log(addressBook.sortContactsByName())
 }catch (error) {
     console.error("Error:", error.message);
 }

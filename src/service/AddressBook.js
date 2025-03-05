@@ -72,5 +72,13 @@ class AddressBook {
             return countMap;
         }, { city: {}, state: {} });
     }
+    sortContactsByName() {
+        return this.contacts.sort((a, b) => {
+            let nameA = a.firstName.toLowerCase()+ a.lastName.toLowerCase();
+            let nameB = b.firstName.toLowerCase()+ b.lastName.toLowerCase();
+            return nameA.localeCompare(nameB);
+        });
+    } 
+    
 }
 module.exports = AddressBook;
