@@ -46,6 +46,11 @@ class AddressBook {
     countContacts() {
         return this.contacts.length;
     } 
+    searchByCityOrState(location) {
+        return this.contacts.filter(c => 
+            c.city.toLowerCase() === location.toLowerCase() || 
+            c.state.toLowerCase() === location.toLowerCase()
+        );
+    }
 }
-
 module.exports = AddressBook;

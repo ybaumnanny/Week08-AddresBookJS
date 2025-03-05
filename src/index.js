@@ -22,6 +22,8 @@ try{
     // console.log(addressBook.deleteContact("Yaman"));
     // console.log(addressBook);
     console.log(addressBook.countContacts())
+
+    console.log(addressBook.searchByCityOrState("Katni"))   
 }catch (error) {
     console.error("Error:", error.message);
 }
