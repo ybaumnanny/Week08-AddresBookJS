@@ -20,6 +20,7 @@ try{
     console.log(addressBook.findContactByName("Yaman"));
 
     console.log(addressBook.deleteContact("Yaman"));
+    console.log(addressBook);
 }catch (error) {
     console.error("Error:", error.message);
 }
