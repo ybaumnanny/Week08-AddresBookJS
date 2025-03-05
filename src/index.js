@@ -25,6 +25,8 @@ try{
 
     console.log(addressBook.searchByCityOrState("Katni"))  
     console.log(addressBook.viewPersonsByCityOrState()) 
+
+    console.log(addressBook.countByCityOrState())
 }catch (error) {
     console.error("Error:", error.message);
 }
