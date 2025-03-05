@@ -10,7 +10,6 @@ class Contact {
         this.email = this.validateEmail(email);
     }
 
-    // Validation Methods
     validateName(name) {
         if (!/^[A-Z][a-zA-Z]{2,}$/.test(name)) {
             throw new Error("Invalid Name! Name should start with a capital letter and have at least 3 characters.");

@@ -1,5 +1,21 @@
-const Contact = require('./models/Contact');
-const contact1 = new Contact(
-    "Yaman", "Mahtha", "Patna", "Bihar", "India", "800007", "9905046375", "mahthayaman@gmail.com"
-);
-console.log(contact1.displayContact())
+const Contact = require('./model/contact');
+const AddressBook = require('./service/AddressBook');
+
+const addressBook = new AddressBook();
+
+try{
+    const contact1 = new Contact(
+        "Yaman", "Mahtha", "Patna", "Bihar", "India", "800007", "9596897841", "pqruvw@gmail.com"
+    );
+
+    const contact2 = new Contact(
+        "Vatsalya", "Katariya", "Katni", "MP", "India", "462022", "8978457889", "xyzabc@gmail.com"
+    );
+
+    addressBook.addContact(contact1);
+    addressBook.addContact(contact2);
+
+    console.log(addressBook)
+}catch (error) {
+    console.error("Error:", error.message);
+}
