@@ -7,16 +7,16 @@ class AddressBook {
 
     addContact(contact) {
         const isDuplicate = this.contacts.filter(c => 
-            c.firstName.toLowerCase() === contact.firstName.toLowerCase() &&
-            c.lastName.toLowerCase() === contact.lastName.toLowerCase()
+            c.firstName.toLowerCase() === contact.firstName.toLowerCase()  &&
+             c.lastName.toLowerCase() === contact.lastName.toLowerCase()
         ).length > 0;
 
         if (isDuplicate) {
-            throw new Error("Duplicate Contact.");
+            throw new Error("Duplicate Contact! A person with the same name already exists.");
         }
 
         this.contacts.push(contact);
-        return "Contact added!";
+        return "Contact added successfully!";
     }
     findContactByName(name) {
         return this.contacts.find(c => c.firstName.toLowerCase() === name.toLowerCase());
@@ -33,7 +33,7 @@ class AddressBook {
             }
         });
 
-        return "Successfully contact updated!";
+        return "Contact updated successfully!";
     } 
     deleteContact(name) {
         const index = this.contacts.findIndex(c => c.firstName.toLowerCase() === name.toLowerCase());
@@ -42,10 +42,10 @@ class AddressBook {
         }
         this.contacts.splice(index, 1);
         return "Contact deleted successfully!";
-    }
+    } 
     countContacts() {
         return this.contacts.length;
-    }
+    } 
 }
 
 module.exports = AddressBook;
