@@ -23,7 +23,8 @@ try{
     // console.log(addressBook);
     console.log(addressBook.countContacts())
 
-    console.log(addressBook.searchByCityOrState("Katni"))   
+    console.log(addressBook.searchByCityOrState("Katni"))  
+    console.log(addressBook.viewPersonsByCityOrState()) 
 }catch (error) {
     console.error("Error:", error.message);
 }
