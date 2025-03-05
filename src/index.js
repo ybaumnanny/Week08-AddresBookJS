@@ -16,6 +16,8 @@ try{
     addressBook.addContact(contact2);
 
     console.log(addressBook)
+
+    console.log(addressBook.findContactByName("Yaman"));
 }catch (error) {
     console.error("Error:", error.message);
 }
