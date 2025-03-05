@@ -19,7 +19,7 @@ class Contact {
 
     validateZip(zip) {
         if (!/^[1-9][0-9]{5}$/.test(zip)) {
-            throw new Error("Invalid Zip Code! Must be in 5-digit or 9-digit format.");
+            throw new Error("Invalid Zip Code! Must be in 6-digit format.");
         }
         return zip;
     }
@@ -38,13 +38,9 @@ class Contact {
         return email;
     }
 
-    displayContact() {
-        return `Name    : ${this.firstName} ${this.lastName}
-Address : ${this.address}, ${this.city}, ${this.state} - ${this.zip}
-Phone   : ${this.phone}
-Email   : ${this.email}`;
+    toString() {
+        return `Name: ${this.firstName} ${this.lastName}, Address: ${this.address}, ${this.city}, ${this.state} - ${this.zip}, Phone: ${this.phone}, Email: ${this.email}`;
     }
-    
 }
 
 module.exports = Contact;

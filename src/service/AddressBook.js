@@ -6,10 +6,10 @@ class AddressBook {
     }
 
     addContact(contact) {
-        const isDuplicate = this.contacts.filter(c => 
-            c.firstName.toLowerCase() === contact.firstName.toLowerCase()  &&
-             c.lastName.toLowerCase() === contact.lastName.toLowerCase()
-        ).length > 0;
+        const isDuplicate = this.contacts.some(c =>
+            c.firstName.toLowerCase() === contact.firstName.toLowerCase() &&
+            c.lastName.toLowerCase() === contact.lastName.toLowerCase()
+        );
 
         if (isDuplicate) {
             throw new Error("Duplicate Contact! A person with the same name already exists.");
@@ -18,9 +18,11 @@ class AddressBook {
         this.contacts.push(contact);
         return "Contact added successfully!";
     }
+
     findContactByName(name) {
         return this.contacts.find(c => c.firstName.toLowerCase() === name.toLowerCase());
     }
+
     editContact(name, updatedDetails) {
         let contact = this.findContactByName(name);
         if (!contact) {
@@ -34,7 +36,8 @@ class AddressBook {
         });
 
         return "Contact updated successfully!";
-    } 
+    }
+
     deleteContact(name) {
         const index = this.contacts.findIndex(c => c.firstName.toLowerCase() === name.toLowerCase());
         if (index === -1) {
@@ -42,16 +45,19 @@ class AddressBook {
         }
         this.contacts.splice(index, 1);
         return "Contact deleted successfully!";
-    } 
+    }
+
     countContacts() {
         return this.contacts.length;
-    } 
+    }
+
     searchByCityOrState(location) {
-        return this.contacts.filter(c => 
-            c.city.toLowerCase() === location.toLowerCase() || 
+        return this.contacts.filter(c =>
+            c.city.toLowerCase() === location.toLowerCase() ||
             c.state.toLowerCase() === location.toLowerCase()
         );
     }
+
     viewPersonsByCityOrState() {
         return this.contacts.reduce((result, contact) => {
             if (!result[contact.city]) {
@@ -65,6 +71,7 @@ class AddressBook {
             return result;
         }, {});
     }
+
     countByCityOrState() {
         return this.contacts.reduce((countMap, contact) => {
             countMap.city[contact.city] = (countMap.city[contact.city] || 0) + 1;
@@ -72,13 +79,26 @@ class AddressBook {
             return countMap;
         }, { city: {}, state: {} });
     }
+
     sortContactsByName() {
         return this.contacts.sort((a, b) => {
-            let nameA = a.firstName.toLowerCase()+ a.lastName.toLowerCase();
-            let nameB = b.firstName.toLowerCase()+ b.lastName.toLowerCase();
+            let nameA = (a.firstName + a.lastName).toLowerCase();
+            let nameB = (b.firstName + b.lastName).toLowerCase();
             return nameA.localeCompare(nameB);
         });
-    } 
-    
+    }
+
+    sortContactsByCity() {
+        return this.contacts.sort((a, b) => a.city.localeCompare(b.city));
+    }
+
+    sortContactsByState() {
+        return this.contacts.sort((a, b) => a.state.localeCompare(b.state));
+    }
+
+    sortContactsByZip() {
+        return this.contacts.sort((a, b) => parseInt(a.zip) - parseInt(b.zip));
+    }
 }
+
 module.exports = AddressBook;
