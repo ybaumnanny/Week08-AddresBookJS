@@ -18,6 +18,8 @@ try{
     console.log(addressBook)
 
     console.log(addressBook.findContactByName("Yaman"));
+
+    console.log(addressBook.deleteContact("Yaman"));
 }catch (error) {
     console.error("Error:", error.message);
 }
